@@ -10,18 +10,57 @@
       background: linear-gradient(to bottom right, #f3f6fa, #ffffff);
     }
 
+    /* Header Styling */
     .header {
-      padding: 20px 40px;
+      padding: 15px 40px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background-color: #ffffff;
       border-bottom: 1px solid #ddd;
     }
 
-    .header img {
+    .logo {
       height: 26px;
     }
 
+    .nav-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box {
+      padding: 6px 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+
+    .profile-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+      .search-box {
+        display: none;
+      }
+    }
+
+    /* Main Content */
     .main {
       display: flex;
       justify-content: center;
@@ -93,9 +132,21 @@
   </style>
 </head>
 <body>
+
   <!-- Microsoft Header -->
   <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" class="logo">
+
+    <nav class="nav-links">
+      <a href="#">Support</a>
+      <a href="#">Products</a>
+      <a href="#">Contact Us</a>
+    </nav>
+
+    <div class="right-section">
+      <input type="text" placeholder="Search..." class="search-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" class="profile-icon">
+    </div>
   </div>
 
   <!-- Main Content -->
