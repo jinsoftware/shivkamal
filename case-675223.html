@@ -7,36 +7,46 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #e8f0fe, #ffffff);
+      background: linear-gradient(to bottom right, #f3f6fa, #ffffff);
+    }
+
+    .header {
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header img {
+      height: 26px;
+    }
+
+    .main {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding: 60px 20px;
     }
 
     .card {
       background: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
       width: 450px;
-      padding: 30px;
+      padding: 35px 30px;
       text-align: center;
     }
 
-    .logo {
-      width: 140px;
-      margin-bottom: 20px;
-    }
-
     .case-id {
-      font-size: 18px;
+      font-size: 16px;
       color: #666;
       margin-bottom: 15px;
     }
 
     .profile-pic {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #0078d4;
@@ -46,6 +56,7 @@
     h2 {
       margin: 0;
       color: #0078d4;
+      font-size: 22px;
     }
 
     .details {
@@ -53,6 +64,7 @@
       margin-top: 20px;
       font-size: 15px;
       color: #333;
+      line-height: 1.8;
     }
 
     .details strong {
@@ -64,7 +76,7 @@
     }
 
     .stars span {
-      font-size: 28px;
+      font-size: 26px;
       cursor: pointer;
       color: #ccc;
     }
@@ -81,38 +93,44 @@
   </style>
 </head>
 <body>
-  <div class="card">
-    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo">
-    
-    <div class="case-id">Case ID: 675223</div>
+  <!-- Microsoft Header -->
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo">
+  </div>
 
-    <img class="profile-pic" src="https://randomuser.me/api/portraits/men/30.jpg" alt="David Cook">
-    
-    <h2>Technician Assigned: David Cook</h2>
+  <!-- Main Content -->
+  <div class="main">
+    <div class="card">
+      <div class="case-id">Case ID: 675223</div>
 
-    <div class="details">
-      <p><strong>Employee ID:</strong> MC20230675</p>
-      <p><strong>D.O.B:</strong> March 12, 1990</p>
-      <p><strong>Work Experience:</strong> 8 Years</p>
-      <p><strong>Specialized Field:</strong> Network Troubleshooting & Remote Support</p>
-      <p><strong>Joining Date:</strong> July 5, 2016</p>
-      <p><strong>Email:</strong> david.cook@microsoftsupport.com</p>
-      <p><strong>Support Number:</strong> +1 206 279 9715</p>
-    </div>
+      <img class="profile-pic" src="https://randomuser.me/api/portraits/men/30.jpg" alt="David Cook">
+      
+      <h2>Technician Assigned: David Cook</h2>
 
-    <div class="feedback">
-      <h3>Rate Your Support</h3>
-      <div class="stars">
-        <span onclick="rate(1)">★</span>
-        <span onclick="rate(2)">★</span>
-        <span onclick="rate(3)">★</span>
-        <span onclick="rate(4)">★</span>
-        <span onclick="rate(5)">★</span>
+      <div class="details">
+        <p><strong>Employee ID:</strong> MC20230675</p>
+        <p><strong>D.O.B:</strong> March 12, 1990</p>
+        <p><strong>Work Experience:</strong> 8 Years</p>
+        <p><strong>Specialized Field:</strong> Network Troubleshooting & Remote Support</p>
+        <p><strong>Joining Date:</strong> July 5, 2016</p>
+        <p><strong>Email:</strong> david.cook@microsoftsupport.com</p>
+        <p><strong>Support Number:</strong> +1 206 279 9715</p>
       </div>
-      <p id="rating-msg" style="margin-top:10px; font-size:14px; color:green;"></p>
-    </div>
 
-    <div class="footer">Microsoft Support | All rights reserved</div>
+      <div class="feedback">
+        <h3>Rate Your Support</h3>
+        <div class="stars">
+          <span onclick="rate(1)">★</span>
+          <span onclick="rate(2)">★</span>
+          <span onclick="rate(3)">★</span>
+          <span onclick="rate(4)">★</span>
+          <span onclick="rate(5)">★</span>
+        </div>
+        <p id="rating-msg" style="margin-top:10px; font-size:14px; color:green;"></p>
+      </div>
+
+      <div class="footer">Microsoft Support | All rights reserved</div>
+    </div>
   </div>
 
   <script>
