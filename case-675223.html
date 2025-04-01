@@ -1,34 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Case 675223 - Microsoft Support</title>
   <style>
     body {
-      font-family: Arial;
-      background-color: #e6f0ff;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e8f0fe, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .profile {
-      background: white;
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      width: 380px;
       padding: 30px;
-      border-radius: 15px;
-      display: inline-block;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: center;
     }
-    img {
-      border-radius: 50%;
-      width: 150px;
+
+    .logo {
+      width: 140px;
       margin-bottom: 20px;
+    }
+
+    .case-id {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #0078d4;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin: 0;
+      color: #0078d4;
+    }
+
+    p {
+      font-size: 15px;
+      color: #444;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <div class="profile">
-    <h2>Case ID: 675223</h2>
-    <img src="https://randomuser.me/api/portraits/men/30.jpg" alt="David Cook">
-    <h3>Technician: David Cook</h3>
-    <p>David is a network specialist at Microsoft, known for quick remote resolutions and customer-friendly service. He has been assigned to your case.</p>
+  <div class="card">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo">
+    
+    <div class="case-id">Case ID: 675223</div>
+
+    <img class="profile-pic" src="https://randomuser.me/api/portraits/men/30.jpg" alt="David Cook">
+    
+    <h2>Technician Assigned: David Cook</h2>
+
+    <p>David Cook is a Senior Network Specialist at Microsoft. With over 8 years of experience in advanced troubleshooting, secure remote sessions, and Windows performance optimization, David has been assigned to your case and will connect with you shortly for resolution.</p>
+
+    <div class="footer">Microsoft Support | All rights reserved</div>
   </div>
 </body>
 </html>
