@@ -188,9 +188,26 @@ function startScan() {
       const final = document.getElementById('finalReport');
       final.style.display = 'block';
       final.innerHTML = `
-        <h4 style='margin-bottom: 8px; color: #0078d4;'>🔍 Final Report</h4>
-        <div style='padding: 10px; background: #fff; border: 1px solid #ddd; border-radius: 8px;'>${report}</div>
-        <br><a href="#" onclick="downloadReport()">📥 Download Report</a>`;
+        <div style='background: #ffffff; border: 1px solid #ddd; border-radius: 10px; padding: 20px;'>
+          <div style='display: flex; align-items: center; gap: 15px;'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' alt='Microsoft Logo' style='height: 30px;'>
+            <div>
+              <h3 style='margin: 0; color: #0078d4;'>Microsoft Department Generated Report</h3>
+              <p style='margin: 0; font-size: 14px; color: #333;'>Case linked to: <strong>${userData.name || 'N/A'}</strong></p>
+            </div>
+          </div>
+          <hr style='margin: 15px 0;'>
+          <div style='display: flex; align-items: flex-start; gap: 15px;'>
+            <img src='https://cdn-icons-png.flaticon.com/512/3135/3135768.png' alt='Profile Icon' style='width: 60px; height: 60px; border-radius: 50%;'>
+            <div>
+              <div style='padding: 10px; background: #f8f8f8; border-radius: 6px;'>
+                ${report}
+              </div>
+              <br>
+              <a href='#' onclick='downloadReport()' style='text-decoration: none; color: #0078d4; font-weight: 500;'>📥 Download Full Report</a>
+            </div>
+          </div>
+        </div>`;
     }, 10000);
   }, 20000);
 }
