@@ -134,10 +134,16 @@
     }
 
     function checkLogin() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      if (user.toLowerCase() === "davidcook" && pass === "Amazon123@") {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+  if (user.toLowerCase() === "davidcook" && pass === "Amazon123@") {
         alert("Login successful!");
+    document.getElementById("loginModal").style.display = "none";
+    setTimeout(() => {
+      document.getElementById("editModal").style.display = "block";
+    }, 300);
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("editModal").style.display = "block";
       } else {
         alert("Invalid credentials");
       }
