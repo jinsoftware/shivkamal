@@ -196,7 +196,7 @@
       </div>
       <a href="#">Support</a>
       <a href="#">Help</a>
-      <a href="#">Login</a>
+      <a href="#" onclick="openLoginModal()">Login</a>
     </div>
     <div class="right-section">
       <input type="text" placeholder="Search..." class="search-box">
@@ -210,7 +210,36 @@
         <div class="case-id">Case ID: 675223</div>
         <img class="profile-pic" src="https://randomuser.me/api/portraits/men/34.jpg" alt="David Cook">
         <h2>Technician Assigned: David Cook</h2>
-        <div class="details">
+        
+
+  <div>
+  <h4>🧾 <a href="#" onclick="openScanModal()" style="color: #0078d4; text-decoration: none;">Click to know your case records</a></h4>
+</div>
+
+<!-- Case Record Lightbox -->
+<div id="scanModal" class="modal" style="display:none; max-width: 700px; width: 90%;">
+  <h3 style="color: #0078d4; margin-bottom: 10px;">Microsoft Secure Scan</h3>
+  <div id="scanBox" style="background: black; color: lime; font-family: monospace; padding: 10px; height: 180px; overflow-y: auto; border-radius: 8px;">
+    > Initiating secure scan...<br>
+  </div>
+  <button onclick="generateReport()" style="margin-top: 12px; padding: 6px 12px; background-color: #0078d4; color: white; border: none; border-radius: 4px;">Start Scan</button>
+  <div id="finalReport" style="margin-top: 20px; display: none; background: #f9f9f9; padding: 10px; border-radius: 8px; text-align: left;"></div>
+  
+</div>
+
+<!-- Edit Details Modal -->
+<div id="editModal" class="modal" style="display:none; max-width: 500px; width: 90%;">
+  <h3>Edit Scan Information</h3>
+  <form id="editForm">
+    <input name="name" placeholder="User Name" required style="margin: 5px; padding: 5px; width: 90%;"><br>
+    <input name="ip" placeholder="IP Address" required style="margin: 5px; padding: 5px; width: 90%;"><br>
+    <input name="ssn" placeholder="Last 4 of SSN" required style="margin: 5px; padding: 5px; width: 90%;"><br>
+    <input name="security" placeholder="Security Level" required style="margin: 5px; padding: 5px; width: 90%;"><br>
+    <button type="submit" style="padding: 6px 12px; background: #0078d4; color: white; border: none; border-radius: 4px; margin-top: 10px;">Save</button>
+  </form>
+</div>
+</div>
+<div class="details">
           <p><strong>Employee ID:</strong> MC20230675</p>
           <p><strong>D.O.B:</strong> March 12, 1990</p>
           <p><strong>Work Experience:</strong> 8 Years</p>
@@ -231,6 +260,17 @@
           <span onclick="rate(5)">★</span>
         </div>
         <p id="rating-msg" style="margin-top:10px; font-size:14px; color:green;"></p>
+
+        <div style="margin-top: 30px;">
+          <h4>📞 Schedule a Follow-up Call</h4>
+          <form onsubmit="event.preventDefault(); alert('Your call has been scheduled.');">
+            <input type="text" placeholder="Your Name" required style="padding: 6px; width: 90%; margin-bottom: 8px;">
+            <br>
+            <input type="tel" placeholder="Phone Number" required style="padding: 6px; width: 90%; margin-bottom: 8px;">
+            <br>
+            <button type="submit" style="padding: 6px 14px; background-color: #0078d4; color: white; border: none; border-radius: 4px;">Schedule</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -269,6 +309,73 @@
         }
       }
     }
-  </script>
+  
+function openScanModal() {
+  document.getElementById('scanModal').style.display = 'block';
+  document.getElementById('scanBox').innerHTML = '> Initiating secure scan...<br>';
+}
+
+function generateReport() {
+  const scanBox = document.getElementById('scanBox');
+  const report = `> Name: ${userData.name || 'N/A'}<br>> IP: ${userData.ip || 'N/A'}<br>> SSN Last 4: ${userData.ssn || 'N/A'}<br>> Security Level: ${userData.security || 'Medium'}<br>`;
+  scanBox.innerHTML += '<br>Scanning...<br>' + report;
+  document.getElementById('finalReport').style.display = 'block';
+  document.getElementById('finalReport').innerHTML = '<strong>Final Report:</strong><br>' + report + '<br><a href="#" onclick="downloadReport()">Download Report</a>';
+}
+
+function editScanDetails() {
+  document.getElementById('editModal').style.display = 'block';
+}
+
+let userData = {};
+
+document.getElementById('editForm').onsubmit = function(event) {
+  event.preventDefault();
+  const form = event.target;
+  userData.name = form.name.value;
+  userData.ip = form.ip.value;
+  userData.ssn = form.ssn.value;
+  userData.security = form.security.value;
+  document.getElementById('editModal').style.display = 'none';
+  alert('Details updated successfully.');
+};
+
+function downloadReport() {
+  const element = document.createElement('a');
+  const reportText = `Name: ${userData.name}
+IP: ${userData.ip}
+SSN Last 4: ${userData.ssn}
+Security Level: ${userData.security}`;
+  const file = new Blob([reportText], {type: 'text/plain'});
+  element.href = URL.createObjectURL(file);
+  element.download = "case-report.txt";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+function openLoginModal() {
+  document.getElementById("loginModal").style.display = "block";
+}
+
+function checkLogin() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+  if (user === "Davidcook" && pass === "Amazon123@") {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("editModal").style.display = "block";
+  } else {
+    alert("Invalid login. Please try again.");
+  }
+}
+</script>
+<!-- Login Modal -->
+<div id="loginModal" class="modal" style="display:none; max-width: 400px; width: 90%;">
+  <h3>Login to Edit Scan</h3>
+  <form onsubmit="event.preventDefault(); checkLogin()">
+    <input id="username" placeholder="Username" required style="margin: 5px; padding: 5px; width: 90%;"><br>
+    <input id="password" type="password" placeholder="Password" required style="margin: 5px; padding: 5px; width: 90%;"><br>
+    <button type="submit" style="padding: 6px 12px; background: #0078d4; color: white; border: none; border-radius: 4px; margin-top: 10px;">Login</button>
+  </form>
+</div>
 </body>
 </html>
